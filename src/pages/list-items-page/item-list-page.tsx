@@ -1,18 +1,17 @@
 import { JSX } from "react";
 import styles from "./ItemListPage.module.scss";
-
-const items = [
-  { id: 1, name: "Камера Canon", details: "16MP, Zoom x10" },
-  { id: 2, name: "Ноутбук Dell", details: "Intel i7, 16GB RAM" },
-  { id: 3, name: "Смартфон Xiaomi", details: "AMOLED, 64MP" }
-];
+import { useAppSelector } from "../../hooks";
+import { getItems } from "../../store/items-data/selectors";
+import { Item } from "../../types/item";
 
 export default function ItemListPage(): JSX.Element {
+  const items = useAppSelector(getItems);
+
   return (
     <div className={styles.listContainer}>
       <h1>Список элементов</h1>
       <div className={styles.itemList}>
-        {items.map((item) => (
+        {items && items.map((item: Item) => (
           <div key={item.id} className={styles.itemCard}>
             <h2>{item.name}</h2>
             <p>{item.details}</p>

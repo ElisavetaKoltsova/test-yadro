@@ -1,11 +1,12 @@
 import { JSX } from "react";
-import { BrowserRouter } from "react-router";
 import ItemListPage from "../../pages/list-items-page/item-list-page";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 export default function App(): JSX.Element {
   return (
-    <BrowserRouter>
+    <Provider store={store}>
       <ItemListPage />
-    </BrowserRouter>
+    </Provider>
   );
 }
