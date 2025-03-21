@@ -1,0 +1,77 @@
+$bg-color: #f0f8ff; // Светло-голубой фон
+$card-bg: #ffffff; // Белый фон карточек
+$text-color: #333; // Цвет текста
+$primary-color: #8ab6d6; // Пастельный голубой
+$border-radius: 12px;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bg-color;
+  min-height: 100vh;
+  padding: 20px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .itemList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+
+    .itemCard {
+      background: $card-bg;
+      border-radius: $border-radius;
+      padding: 15px;
+      box-shadow: $shadow;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+
+      h2 {
+        font-size: 18px;
+        color: $primary-color;
+      }
+
+      p {
+        font-size: 14px;
+        color: $text-color;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+
+    button {
+      background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: darken($primary-color, 15%);
+      }
+
+      &:disabled {
+        background: lighten($primary-color, 20%);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
