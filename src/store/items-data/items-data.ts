@@ -5,7 +5,7 @@ import { fetchItemAction, fetchItemsAction } from "../api-actions";
 import { Item } from "../../types/item";
 
 const initialState: ItemsData = {
-  items: [],
+  items: JSON.parse(localStorage.items),
   selectedItem: null
 };
 
