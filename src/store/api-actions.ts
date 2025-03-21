@@ -5,7 +5,8 @@ import { AxiosInstance } from "axios";
 import { APIRoute } from "../consts";
 
 export const APIAction = {
-  FETCH_ITEMS: '/items'
+  FETCH_ITEMS: '/items',
+  FETCH_ITEM: '/item'
 }
 
 export const fetchItemsAction = createAsyncThunk<Item[], undefined, {
@@ -16,6 +17,18 @@ export const fetchItemsAction = createAsyncThunk<Item[], undefined, {
   APIAction.FETCH_ITEMS,
   async(_arg, {extra: api}) => {
     const {data} = await api.get(APIRoute.Items);
+    return data;
+  }
+);
+
+export const fetchItemAction = createAsyncThunk<Item, {id: string}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  APIAction.FETCH_ITEM,
+  async({id}, {extra: api}) => {
+    const {data} = await api.get<Item>(`${APIRoute.Items}/${id}`);
     return data;
   }
 );

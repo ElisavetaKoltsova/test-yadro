@@ -49,29 +49,4 @@ $shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
     }
   }
-
-  .pagination {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-
-    button {
-      background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: $border-radius;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        background: darken($primary-color, 15%);
-      }
-
-      &:disabled {
-        background: lighten($primary-color, 20%);
-        cursor: not-allowed;
-      }
-    }
-  }
 }
