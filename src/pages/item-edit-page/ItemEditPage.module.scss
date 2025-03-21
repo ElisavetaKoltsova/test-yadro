@@ -1,0 +1,80 @@
+$bg-color: #f0f8ff; // Светло-голубой фон
+$card-bg: #ffffff; // Белый фон карточки
+$text-color: #333; // Цвет текста
+$primary-color: #8ab6d6; // Пастельный голубой
+$border-radius: 12px;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bg-color;
+  min-height: 100vh;
+  padding: 20px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.editCard {
+  background: $card-bg;
+  border-radius: $border-radius;
+  padding: 20px;
+  box-shadow: $shadow;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+
+  h2 {
+    font-size: 22px;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 16px;
+    color: $text-color;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  input, textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: $border-radius;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.saveButton {
+  background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: 0.3s;
+
+  &:hover {
+    background: darken($primary-color, 15%);
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

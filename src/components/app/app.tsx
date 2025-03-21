@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
                 element={<ItemInfoPage />}
               />
               <Route
-                path={`${AppRoute.ItemId}/${AppRoute.ItemEditPage}`}
+                path={`${AppRoute.ItemId}${AppRoute.ItemEditPage}`}
                 element={<ItemEditPage />}
               />
             </Route>

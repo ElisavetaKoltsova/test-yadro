@@ -28,7 +28,7 @@ export default function ItemInfoPage(): JSX.Element {
         <p>Functional: {item?.functional}</p>
         <p>Quantity: {item?.quantity}</p>
         <p className={item?.inStock ? styles.inStock : styles.noInStock}>{item?.inStock ? 'In stock' : 'Out of stock'}</p>
-        <button className={styles.editButton} onClick={() => navigate(`${item?.id}/${AppRoute.ItemEditPage}`)}>
+        <button className={styles.editButton} onClick={() => navigate(`${AppRoute.ItemInfoPage}/${item?.id}${AppRoute.ItemEditPage}`)}>
           Редактировать
         </button>
       </div>
