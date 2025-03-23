@@ -21,11 +21,19 @@ export const itemsData = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchItemsAction.pending, (state) => {
+        state.isItemsDataLoading = true;
+      })
       .addCase(fetchItemsAction.fulfilled, (state, action) => {
         state.items = action.payload;
+        state.isItemsDataLoading = false;
+      })
+      .addCase(fetchItemAction.pending, (state) => {
+        state.isSelectedItemDataLoading = true;
       })
       .addCase(fetchItemAction.fulfilled, (state, action) => {
         state.selectedItem = action.payload;
+        state.isSelectedItemDataLoading = false;
       })
       .addCase(updateItemAction.fulfilled, (state, action) => {
         state.items = action.payload.items;
