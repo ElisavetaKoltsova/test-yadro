@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $bg-color;
+}
+
+.notFoundCard {
+  background: $card-bg;
+  border-radius: $border-radius;
+  padding: 30px;
+  box-shadow: $shadow;
+  text-align: center;
+  max-width: 400px;
+
+  h1 {
+    font-size: 48px;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+
+    &:hover {
+      background: darken($primary-color, 15%);
+    }
+  }
+}

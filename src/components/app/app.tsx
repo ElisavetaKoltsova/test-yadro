@@ -13,7 +13,7 @@ export default function App(): JSX.Element {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Layout />}>
             <Route
               path={AppRoute.ItemListPage}
@@ -35,6 +35,14 @@ export default function App(): JSX.Element {
               path="*"
               element={<NotFoundPage />}
             />
+          </Route>
+        </Routes> */}
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<ItemListPage />} />
+            <Route path={`${AppRoute.ItemInfoPage}/:id`} element={<ItemInfoPage />} />
+            <Route path={`${AppRoute.ItemInfoPage}/:id${AppRoute.ItemEditPage}`} element={<ItemEditPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -56,7 +56,6 @@ export default function ItemEditPage(): JSX.Element {
           ...data
         }
       }));
-      console.log(data)
       navigate(`${AppRoute.ItemInfoPage}/${id}`);
     }
   };
