@@ -4,6 +4,8 @@ import { Item } from "./item";
 export type ItemsData = {
   items: Item[];
   selectedItem: Item | null;
+  isItemsDataLoading: boolean;
+  isSelectedItemDataLoading: boolean;
 };
 
 export type State = ReturnType<typeof store.getState>;

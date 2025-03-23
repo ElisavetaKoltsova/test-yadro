@@ -24,10 +24,10 @@ export default function ItemInfoPage(): JSX.Element {
       <h1>Детальная информация</h1>
       <div className={styles.detailCard}>
         <h2>{item?.name}</h2>
-        <p>Details: {item?.details}</p>
-        <p>Functional: {item?.functional}</p>
-        <p>Quantity: {item?.quantity}</p>
-        <p className={item?.inStock ? styles.inStock : styles.noInStock}>{item?.inStock ? 'In stock' : 'Out of stock'}</p>
+        <p>Детали: {item?.details}</p>
+        <p>Функцилонал: {item?.functional}</p>
+        <p>Количество: {item?.quantity}</p>
+        <p className={item?.inStock ? styles.inStock : styles.noInStock}>{item?.inStock ? 'Есть на скалде' : 'Отсутствует на складе'}</p>
         <button className={styles.editButton} onClick={() => navigate(`${AppRoute.ItemInfoPage}/${item?.id}${AppRoute.ItemEditPage}`)}>
           Редактировать
         </button>

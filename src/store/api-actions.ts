@@ -36,7 +36,7 @@ export const fetchItemAction = createAsyncThunk<Item, {id: string}, {
   }
 );
 
-export const updateItemAction = createAsyncThunk<void, {item: Item}, {
+export const updateItemAction = createAsyncThunk<{items: Item[], item: Item}, {item: Item}, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -44,21 +44,18 @@ export const updateItemAction = createAsyncThunk<void, {item: Item}, {
   APIAction.UPDATE_ITEM,
   async({item}, {extra: api}) => {
     await api.put<Item>(`${APIRoute.Items}/${item.id}`, item);
-    // сохранение в локал сторедж
-    // Получаем текущий массив из localStorage
-    const items = JSON.parse(localStorage.items) || []; // Если items не существует, то будет пустой массив
 
-    // Находим индекс элемента, который нужно обновить, по его уникальному id
+    const items: Item[] = JSON.parse(localStorage.items) || [];
     const itemIndex = items.findIndex((updatedItem: Item) => item.id === updatedItem.id);
 
     if (itemIndex !== -1) {
-      // Если элемент найден, обновляем его данные
       items[itemIndex] = { ...items[itemIndex], ...item };
       
-      // Сохраняем обновленный массив обратно в localStorage
       localStorage.setItem('items', JSON.stringify(items));
-    } else {
-      console.log('Item not found');
+
+      return {items, item};
     }
+
+    return {items: [], item};
   }
 );

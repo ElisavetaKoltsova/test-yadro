@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ItemsData } from "../../types/state";
 import { NameSpace } from "../../consts";
-import { fetchItemAction, fetchItemsAction } from "../api-actions";
+import { fetchItemAction, fetchItemsAction, updateItemAction } from "../api-actions";
 import { Item } from "../../types/item";
 
 const initialState: ItemsData = {
   items: JSON.parse(localStorage.items),
-  selectedItem: null
+  selectedItem: null,
+  isItemsDataLoading: false,
+  isSelectedItemDataLoading: false
 };
 
 export const itemsData = createSlice({
@@ -24,6 +26,10 @@ export const itemsData = createSlice({
       })
       .addCase(fetchItemAction.fulfilled, (state, action) => {
         state.selectedItem = action.payload;
+      })
+      .addCase(updateItemAction.fulfilled, (state, action) => {
+        state.items = action.payload.items;
+        state.selectedItem = action.payload.item;
       });
   }
 });
