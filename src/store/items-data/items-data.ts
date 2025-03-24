@@ -5,7 +5,7 @@ import { fetchItemAction, fetchItemsAction, updateItemAction } from "../api-acti
 import { Item } from "../../types/item";
 
 const initialState: ItemsData = {
-  items: JSON.parse(localStorage.items),
+  items: localStorage.items ? JSON.parse(localStorage.items) : [],
   selectedItem: null,
   isItemsDataLoading: false,
   isSelectedItemDataLoading: false
@@ -26,6 +26,9 @@ export const itemsData = createSlice({
       })
       .addCase(fetchItemsAction.fulfilled, (state, action) => {
         state.items = action.payload;
+        state.isItemsDataLoading = false;
+      })
+      .addCase(fetchItemsAction.rejected, (state) => {
         state.isItemsDataLoading = false;
       })
       .addCase(fetchItemAction.pending, (state) => {
