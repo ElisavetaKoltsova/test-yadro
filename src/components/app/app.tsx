@@ -13,30 +13,6 @@ export default function App(): JSX.Element {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        {/* <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              path={AppRoute.ItemListPage}
-              element={<ItemListPage />}
-            />
-            <Route
-              path={AppRoute.ItemInfoPage}
-            >
-              <Route
-                path={AppRoute.ItemId}
-                element={<ItemInfoPage />}
-              />
-              <Route
-                path={`${AppRoute.ItemId}${AppRoute.ItemEditPage}`}
-                element={<ItemEditPage />}
-              />
-            </Route>
-            <Route
-              path="*"
-              element={<NotFoundPage />}
-            />
-          </Route>
-        </Routes> */}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<ItemListPage />} />

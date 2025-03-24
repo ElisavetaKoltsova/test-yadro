@@ -29,14 +29,17 @@ export default function ItemInfoPage(): JSX.Element {
         <ClipLoader color="#8ab6d6" /> :
         (
           <div className={styles.detailCard}>
-            <h2>{item?.name}</h2>
-            <p>Детали: {item?.details}</p>
-            <p>Функцилонал: {item?.functional}</p>
-            <p>Количество: {item?.quantity}</p>
-            <p className={item?.inStock ? styles.inStock : styles.noInStock}>{item?.inStock ? 'Есть на скалде' : 'Отсутствует на складе'}</p>
-            <button className={styles.editButton} onClick={() => navigate(`${AppRoute.ItemInfoPage}/${item?.id}${AppRoute.ItemEditPage}`)}>
-              Редактировать
-            </button>
+            {
+              item !== null ?
+              (
+                <><h2>{item?.name}</h2><p>Детали: {item?.details}</p><p>Функцилонал: {item?.functional}</p><p>Количество: {item?.quantity}</p><p className={item?.inStock ? styles.inStock : styles.noInStock}>{item?.inStock ? 'Есть на скалде' : 'Отсутствует на складе'}</p><button className={styles.editButton} onClick={() => navigate(`${AppRoute.ItemInfoPage}/${item?.id}${AppRoute.ItemEditPage}`)}>
+                      Редактировать
+                    </button></>
+              ) :
+              (
+                <h2>Элемент не найден</h2>
+              )
+            }
           </div>
         )
       }

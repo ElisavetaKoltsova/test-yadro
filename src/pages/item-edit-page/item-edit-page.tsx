@@ -68,68 +68,76 @@ export default function ItemEditPage(): JSX.Element {
         <ClipLoader color="#8ab6d6" /> :
         (
           <div className={styles.editCard}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className={styles.formInputContainer}>
-                <label htmlFor="name">Название</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  {...register("name", { required: "Это поле обязательно" })} 
-                />
-                {errors.name && <p className={styles.error}>{errors.name.message}</p>}
-              </div>
-              
-              <div className={styles.formInputContainer}>
-                <label htmlFor="details">Детали</label>
-                <textarea 
-                  id="details" 
-                  {...register("details", { required: "Это поле обязательно" })} 
-                />
-                {errors.details && <p className={styles.error}>{errors.details.message}</p>}
-              </div>
-              
+            {
+              item !== null ?
+              (
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className={styles.formInputContainer}>
+                    <label htmlFor="name">Название</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      {...register("name", { required: "Это поле обязательно" })} 
+                    />
+                    {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+                  </div>
+                  
+                  <div className={styles.formInputContainer}>
+                    <label htmlFor="details">Детали</label>
+                    <textarea 
+                      id="details" 
+                      {...register("details", { required: "Это поле обязательно" })} 
+                    />
+                    {errors.details && <p className={styles.error}>{errors.details.message}</p>}
+                  </div>
+                  
 
-              <div className={styles.formInputContainer}>
-                <label htmlFor="functional">Функционал</label>
-                <input 
-                  type="text" 
-                  id="functional" 
-                  {...register("functional", { required: "Это поле обязательно" })} 
-                />
-                {errors.functional && <p className={styles.error}>{errors.functional.message}</p>}
-              </div>
-              
-              <div className={styles.formInputContainer}>
-                <label htmlFor="quantity">Количество</label>
-                <input 
-                  type="number" 
-                  id="quantity" 
-                  {...register("quantity", { 
-                    required: "Это поле обязательно", 
-                    valueAsNumber: true,
-                    min: {
-                      value: 1,
-                      message: "Количество должно быть больше 0"
-                    }
-                  })} 
-                />
-                {errors.quantity && <p className={styles.error}>{errors.quantity.message}</p>}
-              </div>
-              
-              <div className={styles.formInputContainer}>
-                <label htmlFor="instock">Есть на складе?</label>
-                <input 
-                  type="checkbox" 
-                  id="instock" 
-                  {...register("inStock")} 
-                />
-                {errors.quantity && <p className={styles.error}>{errors.inStock?.message}</p>}
-              </div>
+                  <div className={styles.formInputContainer}>
+                    <label htmlFor="functional">Функционал</label>
+                    <input 
+                      type="text" 
+                      id="functional" 
+                      {...register("functional", { required: "Это поле обязательно" })} 
+                    />
+                    {errors.functional && <p className={styles.error}>{errors.functional.message}</p>}
+                  </div>
+                  
+                  <div className={styles.formInputContainer}>
+                    <label htmlFor="quantity">Количество</label>
+                    <input 
+                      type="number" 
+                      id="quantity" 
+                      {...register("quantity", { 
+                        required: "Это поле обязательно", 
+                        valueAsNumber: true,
+                        min: {
+                          value: 1,
+                          message: "Количество должно быть больше 0"
+                        }
+                      })} 
+                    />
+                    {errors.quantity && <p className={styles.error}>{errors.quantity.message}</p>}
+                  </div>
+                  
+                  <div className={styles.formInputContainer}>
+                    <label htmlFor="instock">Есть на складе?</label>
+                    <input 
+                      type="checkbox" 
+                      id="instock" 
+                      {...register("inStock")} 
+                    />
+                    {errors.quantity && <p className={styles.error}>{errors.inStock?.message}</p>}
+                  </div>
 
-              <button type="submit" className={styles.saveButton}>
-                Сохранить
-              </button>
-            </form>
+                  <button type="submit" className={styles.saveButton}>
+                    Сохранить
+                  </button>
+                </form>
+              ) :
+              (
+                <h2>Элемент не найден</h2>
+              )
+            }
           </div>
         )
       }

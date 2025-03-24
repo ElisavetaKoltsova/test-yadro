@@ -35,6 +35,9 @@ export const itemsData = createSlice({
         state.selectedItem = action.payload;
         state.isSelectedItemDataLoading = false;
       })
+      .addCase(fetchItemAction.rejected, (state) => {
+        state.isSelectedItemDataLoading = false;
+      })
       .addCase(updateItemAction.fulfilled, (state, action) => {
         state.items = action.payload.items;
         state.selectedItem = action.payload.item;
